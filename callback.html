@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QuickBooks Authorization Callback</title>
+  <style>body{font-family:system-ui,-apple-system,Segoe UI,sans-serif;max-width:760px;margin:48px auto;padding:0 20px;line-height:1.6;color:#172033}code{background:#f2f4f7;padding:2px 5px;border-radius:4px}</style>
+</head>
+<body>
+  <h1>Connecting QuickBooks…</h1>
+  <p>This page is handing the Intuit authorization response back to the private local bookkeeping helper.</p>
+  <p id="status">Redirecting to local helper…</p>
+  <p>If nothing happens, make sure the local authorization helper is running, then click:</p>
+  <p><a id="manual" href="#">Continue to local helper</a></p>
+  <script>
+    const localUrl = 'http://localhost:3000/callback' + window.location.search;
+    document.getElementById('manual').href = localUrl;
+    document.getElementById('status').innerHTML = 'Redirecting to <code>localhost</code>…';
+    setTimeout(() => { window.location.replace(localUrl); }, 300);
+  </script>
+</body>
+</html>
